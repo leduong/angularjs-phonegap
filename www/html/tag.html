@@ -1,0 +1,31 @@
+<div class="group">
+	<div class="container-fluid">
+		<div ng-switch on="item.type">
+			<div class="map-marker" ng-switch-when="city"><i class="vietnam"></i></div>
+			<div class="map-marker" ng-switch-when="group"><i class="icon-map-marker"></i></div>
+			<div class="map-marker" ng-switch-when="topic"><i class="icon-key"></i></div>
+		</div>
+		<h1>{{item.name}}</h1>
+		<p ng-if="item.long_name" ng-bind-html="item.long_name|unsafe"></p>
+		<div class="like" follow="{{item.slug}}" ng-click="item.followed = !item.followed">
+			<a ng-class="{'active':item.followed}"><i class="icon-thumbs-up"></i></a><span ng-show="item.followed"> bạn và </span> {{item.follows}} theo dõi
+		</div>
+		<div class="address" ng-if="item.address" >
+			{{item.address}}
+		</div>
+		<div id="gmap" ng-if="item.map">
+			<div class="google-map"
+				center="position.coords"
+				zoom="zoom"
+				markers="markers"
+				latitude="latitude"
+				longitude="longitude"
+				events="events"
+				mark-click="false"
+				draggable="false"
+				fit="true">
+			</div>
+		</div>
+	</div>
+</div>
+<classifieds></classifieds>

@@ -1,0 +1,55 @@
+<div class="container-fluid">
+	<div class="join">
+		<div class="container-fluid">
+			<div class="media">
+				<a class="pull-left" href="#">
+				<i class="media-object i-email"></i>
+				</a>
+				<div class="media-body">
+					<h1 class="media-heading">Đăng nhập/Đăng ký</h1>
+					<p>
+					Xin đăng ký/đăng nhập bằng số điện thoại di dộng ở Việt Nam hoặc địa chỉ email.
+					</p>
+					<p>
+					Chúng tôi không chia sẻ thông tin của bạn cho bất kỳ ai.
+					</p>
+				</div>
+			</div>
+			<form role="form" ng-submit="login()">
+				<div ng-switch="CurrentStep()" ng-animate="'animate'">
+					<div ng-switch-when="one">
+						<div class="form-group">
+							<input class="form-control" type="text" name="email" placeholder="Địa chỉ email hoặc số ĐT di dộng ở VN" ng-model="credentials.user" required />
+						</div>
+					</div>
+					<div ng-switch-when="two">
+						<div class="form-group">
+							<p>Vui lòng soạn tin nhắn "REG NDCC" và gởi 8077 bằng số điện thoại {{credentials.user}} để lấy mã số xác nhận</p>
+							<input class="form-control" type="password" name="password" placeholder="Mật khẩu" ng-model="credentials.password" required />
+						</div>
+					</div>
+					<div ng-switch-when="three">
+						<div class="form-group">
+							<p>Vui lòng kiểm tra e-mail {{credentials.user}} để lấy mã số xác nhận</p>
+							<input class="form-control" type="password" name="password" placeholder="Mật khẩu" ng-model="credentials.password" required />
+						</div>
+					</div>
+					<div ng-switch-when="four">
+						<div class="form-group">
+							<input class="form-control" type="password" name="password" placeholder="Mật khẩu" ng-model="credentials.password" required />
+							<p class="help-block">
+							Nếu quên mật khẩu, hãy sử dụng số điện thoại đã đăng ký soạn tin nhắn "REG NDCC" và gởi 8077 bằng số điện thoại đã đăng ký để lấy mật khẩu mới
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="pull-right">
+					<a class="btn btn-default" ng-click="Previous()" ng-show="!isFirstStep()">
+					<i class="icon-arrow-left"></i> Trở lại
+					</a>
+					<a class="btn btn-primary" ng-click="Next()">{{NextLabel()}}</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

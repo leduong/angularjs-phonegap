@@ -1,0 +1,115 @@
+<div ng-controller="PostCtrl">
+	<div class="container-fluid">
+		<div class="group">
+			<div class="video" ng-repeat="v in item.video" ng-hide ng-show="item.video">
+				<video width="100%" height="240" controls>
+					<source ng-src="http://192.241.221.27/{{v}}" type="video/mp4">
+				</video>
+			</div>
+			<div ng-if="item.image" class="image">
+				<carousel slides="item.image" rent="item.meta.rent" price="item.meta.price"></carousel>
+			</div>
+			<div ng-hide="item.image" class="image">
+				<img ng-src="http://192.241.221.27/{{item.img}}" alt="" />
+				<div class="price" ng-if="item.meta.rent" ng-bind-html="item.meta.rent|rentify|unsafe"></div>
+				<div class="price" ng-if="!item.meta.rent" ng-show="item.meta.price" ng-bind-html="item.meta.price|pricify|unsafe"></div>
+			</div>
+			<div ng-hide ng-show="item.attch">
+				<div ng-repeat="file in item.attch">
+					<a ng-href="{{file}}" title="{{file}}"></a>
+				</div>
+			</div>
+			<div class="tag" ng-show="item.tags">
+				<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" href="#/tag/{{k}}.html">{{v}}</a>
+			</div>
+			<div class="message" ng-bind-html="item.message|unsafe"></div>
+			<div ng-show="item.meta.local">
+				<a ng-repeat="(k,v) in item.meta.local" class="btn btn-tag" href="#/tag/{{k}}.html">{{v}}</a>
+			</div>
+			<div class="address">
+				{{item.meta.address}}
+			</div>
+			<div id="gmap" ng-if="item.meta.map">
+				<div class="google-map"
+					center="position.coords"
+					zoom="zoom"
+					markers="markers"
+					latitude="latitude"
+					longitude="longitude"
+					mark-click="false"
+					draggable="true"
+					fit="false">
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="agents">
+		<div class="column">
+			<div class="one-half">
+				<div class="image">
+					<a ng-if="item.user.username" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
+					<img ng-src="http://192.241.221.27/{{item.user.image}}" alt="{{item.user.name}}" />
+					</a>
+					<a ng-if="!item.user.username" title="{{item.user.name}}">
+					<img ng-src="http://192.241.221.27/{{item.user.image}}" alt="{{item.user.name}}" />
+					</a>
+				</div>
+			</div>
+			<div class="two-half">
+				<div class="info">
+					<div class="name">
+						<a ng-if="item.user.username" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
+						{{item.user.name}}
+						</a>
+						<a ng-if="!item.user.username" title="{{item.user.name}}">
+						{{item.user.name}}
+						</a>
+					</div>
+					<div class="callsms">
+						<a class="btn-call" href="tel:{{item.user.phone}}">Gọi</a>
+						<a class="btn-sms" href="sms:{{item.user.phone}}">Nhắn tin</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="comments" ng-show="item.comments">
+		<div class="feed">
+			<div class="column likeshare">
+				<div class="one-third" ng-click="item.social.liked=item.social.liked+1" like="{{item.id}}">
+					<a ng-class="{'active':item.social.liked>0}"><i class="icon-thumbs-up"></i></a> <span ng-show="item.social.like">{{item.social.like}}</span>
+				</div>
+				<div class="one-third">
+					<a ng-class="{'active':item.social.commented>0}"><i class="icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
+				</div>
+			</div>
+		</div>
+		<div>
+			<strong ng-if="item.social.comment">{{item.comments.length}}</strong><strong ng-if="!item.social.comment">Chưa có</strong> bình luận.<span ng-show="!login"><a ng-href="#/login.html" title="Đăng nhập"> Đăng nhập</a> để bình luận</span>
+		</div>
+		<div class="content">
+			<div class="comment" ng-repeat="c in item.comments" ng-show="c.name">
+				<div ng-bind-html="c.comment|unsafe"></div>
+				<small class="datetime">
+				<span><b>{{c.name}}</b></span>
+				<span ng-show="c.location">{{c.location}}</span>
+				<span ng-show="c.time">{{c.time}}</span>
+				</small>
+			</div>
+		</div>
+	</div>
+	<div id="share">
+		<div class="content">
+			<form ng-submit="submit(item.id)">
+				<textarea id="comment" auto-grow ng-disabled="!login" ng-model="form.comment" class="form-control" rows="3" placeholder="Bình luận của bạn?"></textarea>
+				<div class="submit">
+					<div class="media">
+						<span class="pull-left"><button ng-disabled="!login" class="btn btn-primary">Đăng</button></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /Agent -->

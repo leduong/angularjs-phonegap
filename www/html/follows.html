@@ -1,0 +1,26 @@
+<div class="container-fluid">
+	<div class="follows">
+		<h5 class="uppercase">ĐƯỢC TÌM KIẾM NHIỀU NHẤT TRÊN GOOGLE:</h5>
+		<div class="content">
+			<div ng-show="follows.city">
+				<h5>Tỉnh thành</h5>
+				<p>
+				<a ng-repeat="tag in follows.city" class="btn btn-tag" ng-href="#/tag/{{tag.slug}}.html">{{tag.name}}</a>
+				</p>
+			</div>
+			<div ng-show="follows.group">
+				<h5>Địa danh</h5>
+				<p>
+				<a ng-repeat="tag in follows.group" class="btn btn-tag" ng-href="#/tag/{{tag.slug}}.html">{{tag.name}}</a>
+				</p>
+			</div>
+			<div ng-show="follows.topic">
+				<h5>Chủ đề</h5>
+				<p>
+				<a ng-repeat="tag in follows.topic" class="btn btn-tag" ng-href="#/tag/{{tag.slug}}.html">{{tag.name}}</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Follows -->

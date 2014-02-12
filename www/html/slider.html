@@ -1,0 +1,17 @@
+<div class="slider">
+	<div class="content carousel">
+		<ol class="carousel-indicators" ng-show="slides.length > 1">
+			<li ng-repeat="item in slides" ng-class="{'active':isSlide($index)}" ng-click="setSlide($index);"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="item slide-animation" ng-class="{'active':isSlide($index)}" ng-repeat="item in slides" ng-swipe-right="next()" ng-swipe-left="prev()" ng-hide="!isSlide($index)">
+				<a ng-href="#/post/{{item.id}}.html">
+				<img class="img-responsive" ng-src="http://192.241.221.27/thumb.php?w=650&h=650&t=m&src={{item.img}}" alt="" /></a>
+				<div class="price" ng-if="item.meta.rent" ng-bind-html="item.meta.rent|rentify|unsafe"></div>
+				<div class="price" ng-if="!item.meta.rent" ng-show="item.meta.price" ng-bind-html="item.meta.price|pricify|unsafe"></div>
+			</div>
+		</div>
+		<a class="carousel-control left" ng-click="prev()" ng-show="slides.length > 1"><span class="icon-prev"></span></a>
+		<a class="carousel-control right" ng-click="next()" ng-show="slides.length > 1"><span class="icon-next"></span></a>
+	</div>
+</div>

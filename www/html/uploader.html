@@ -1,0 +1,20 @@
+<!-- uploader.html template -->
+<div class="submit">
+	<div class="media">
+		<input multiple="multiple" type="file" ng-hide="true" name="uploader[]" onchange="angular.element(this).scope().sendFile(this);" />
+		<a class="pull-left upload"><i class="icon-picture"></i></a>
+		<a class="pull-left upload"><i class="icon-paper-clip"></i></a>
+		<!--a class="pull-left upload" href="#"><i class="icon-facetime-video"></i></a>
+		<a class="pull-left checkin" href="#"><i class="icon-map-marker"></i></a-->
+	</div>
+	<!-- progress bar -->
+	<div class="progress" ng-show="progress!=0">
+		<div class="bar" style="width:{{progress}}%;"></div>
+	</div>
+</div>
+<div class="thumbs">
+	<div ng-repeat="item in images" class="thumb">
+		<img ng-src="http://192.241.221.27/thumb.php?w=100&h=100&t=m&src={{item}}" alt="" />
+		<a ng-click="remove($index)"><i class="icon-remove"></i></a>
+	</div>
+</div>

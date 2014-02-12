@@ -1,0 +1,37 @@
+<div id="share">
+	<form role="form">
+		<div ng-switch="CurrentStep()">
+			<div ng-switch-when="one">
+				<div class="content">
+					<input type="hidden" ng-init="form.type = ('status')" />
+					<input type="hidden" ng-init="form.tag = ([])" />
+					<textarea auto-grow ng-disabled="!login" ng-model="form.message" class="form-control" rows="5" placeholder="Bạn đang nghĩ gì..."></textarea>
+					<uploader action="http://192.241.221.27/api/upload.html"></uploader>
+				</div>
+			</div>
+			<div ng-switch-when="two">
+				<div class="form-group">
+					Xin hãy chọn những cụm từ mô tả mục trao đổi của bạn:
+				</div>
+				<div ng-show="tags">
+					<button ng-repeat="k in tags" class="btn btn-tag" ng-class="{'active':form.tag.indexOf(k) > -1}" ng-click="toggle(k)"
+					>{{k}}</button>
+				</div>
+				<div class="form-group">
+					Để nhadat.com tìm được nhiều cụm từ phù hợp hơn xin hãy bấm "Trở lại" và mô tả chi tiết hơn.
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="form-group btn-share">
+		<div class="pull-right">
+			<a class="btn btn-default btn-medium" ng-click="Previous()" ng-show="!isFirstStep()"> <i class="icon-arrow-left"></i>
+			Trở lại
+			</a>
+			<a class="btn btn-primary btn-medium" ng-click="Next()">
+			{{Label()}} <i class="icon-arrow-right"></i>
+			</a>
+		</div>
+	</div>
+	<br class="clearfix" />
+</div>
