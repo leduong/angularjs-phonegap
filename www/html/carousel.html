@@ -4,7 +4,7 @@
 	</ol>
 	<div class="carousel-inner">
 		<div class="item slide-animation" ng-class="{'active':isSlide($index)}" ng-repeat="slide in slides" ng-swipe-right="next()" ng-swipe-left="prev()" ng-hide="!isSlide($index)">
-			<img class="img-responsive" ng-src="http://192.241.221.27/thumb.php?w=650&h=650&t=m&src={{slide}}" alt="" />
+			<img class="img-responsive" ng-src="http://www.nhadat.com/thumb.php?w=650&h=650&t=m&src={{slide}}" alt="" />
 			<div class="price" ng-if="rent" ng-bind-html="rent|rentify|unsafe"></div>
 			<div class="price" ng-if="!rent" ng-show="price" ng-bind-html="price|pricify|unsafe"></div>
 		</div>

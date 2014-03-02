@@ -32,7 +32,7 @@
 					<div class="one-half">
 						<div class="image">
 							<a href="#/post/{{item.link}}.html">
-							<img ng-src="http://192.241.221.27/{{item.img}}" alt="{{item.title}}" class="img" />
+							<img ng-src="http://www.nhadat.com/{{item.img}}" alt="{{item.title}}" class="img" />
 							</a>
 							<div class="tags">
 								<a ng-repeat="(tag,name) in item.tag" class="label btn-tag" href="#/tag/{{tag}}.html">{{name| characters:16}}</a>
@@ -49,7 +49,7 @@
 						<div class="info">
 							<div class="agent">
 								<a ng-show="item.user.username" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
-								<img ng-src="http://192.241.221.27/thumb.php?t=a&w=50&h=50&src={{item.user.image}}" alt="{{item.user.name}}" /> <b>{{item.user.name}}</b>
+								<img ng-src="http://www.nhadat.com/thumb.php?t=a&w=50&h=50&src={{item.user.image}}" alt="{{item.user.name}}" /> <b>{{item.user.name}}</b>
 								</a>
 								<span ng-show="!item.user.username" >{{item.user.name}}</span>
 							</div>
@@ -65,7 +65,7 @@
 					<div class="feed">
 						<div class="user">
 							<a class="pull-left" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
-							<img ng-src="http://192.241.221.27/thumb.php?w=50&h=50&t=a&src={{item.user.image}}" alt="" />
+							<img ng-src="http://www.nhadat.com/thumb.php?w=50&h=50&t=a&src={{item.user.image}}" alt="" />
 							</a>
 							<div class="name">
 								<div>
@@ -82,17 +82,17 @@
 						</div>
 						<div class="image" ng-hide ng-if="item.image[0]">
 							<a href="#/comment/{{item.link}}.html">
-							<img ng-src="http://192.241.221.27/{{item.img}}" alt="{{item.title}}" />
+							<img ng-src="http://www.nhadat.com/{{item.img}}" alt="{{item.title}}" />
 							</a>
 						</div>
 						<div class="video" ng-hide ng-if="item.video[0]">
 							<video width="100%" height="240" controls>
-							<source ng-src="http://192.241.221.27/{{item.video[0]}}" type="video/mp4"></video>
+							<source ng-src="http://www.nhadat.com/{{item.video[0]}}" type="video/mp4"></video>
 						</div>
 						<div class="message" ng-bind-html="item.text|words:30|linky|fixbr|unsafe"></div>
 						<div class="attach" ng-hide ng-if="item.attach[0]">
 							<div ng-repeat="file in item.attach"> <i class="icon-paper-clip"></i>
-								<a href="http://192.241.221.27/uploads/media/{{file}}" title="{{file}}" target="_blank">{{file}}</a>
+								<a href="http://www.nhadat.com/uploads/media/{{file}}" title="{{file}}" target="_blank">{{file}}</a>
 							</div>
 						</div>
 						<div class="message" ng-if="item.tag.length">

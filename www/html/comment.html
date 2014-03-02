@@ -16,7 +16,7 @@
 	<div class="feed">
 		<div class="user">
 			<a class="pull-left" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
-			<img ng-src="http://192.241.221.27/{{item.user.image}}" alt="" /></a>
+			<img ng-src="http://www.nhadat.com/{{item.user.image}}" alt="" /></a>
 			<div class="name">
 				<div><a ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
 					<b>{{item.user.name}}</b>
@@ -26,7 +26,7 @@
 		</div>
 		<div class="video" ng-repeat="v in item.video" ng-hide ng-show="item.video">
 			<video width="100%" height="240" controls>
-				<source ng-src="http://192.241.221.27/{{v}}" type="video/mp4">
+				<source ng-src="http://www.nhadat.com/{{v}}" type="video/mp4">
 			</video>
 		</div>
 		<div ng-if="item.image" class="image">
@@ -39,7 +39,7 @@
 		</div>
 		<div class="attach" ng-hide ng-show="item.attach">
 			<div ng-repeat="f in item.attach">
-				<i class="icon-paper-clip"></i> <a href="http://192.241.221.27/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
+				<i class="icon-paper-clip"></i> <a href="http://www.nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
 			</div>
 		</div>
 		<div class="column likeshare">
