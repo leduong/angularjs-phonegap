@@ -12,7 +12,7 @@
 					<img ng-src="http://www.nhadat.com/thumb.php?t=a&w=112&h=112&src={{user.image}}" class="img-responsive" alt="" />
 				</div>
 				<div class="one-half">
-					<div class="info">
+					<div class="info" ng-show="user.username">
 						<a href="#/profile/{{user.username}}.html" title="{{user.username}}">{{user.username}}.nhadat.com</a>
 					</div>
 					<div class="callsms">
@@ -26,6 +26,5 @@
 			</div>
 		</div>
 	</div>
-	<slider></slider>
 	<classifieds></classifieds>
 </div>

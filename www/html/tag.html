@@ -7,11 +7,12 @@
 		</div>
 		<h1>{{item.name}}</h1>
 		<p ng-if="item.long_name" ng-bind-html="item.long_name|unsafe"></p>
+		<p class="by" ng-if="item.by_name">Đầu tiên được tạo bởi {{item.by_name}}</p>
 		<div class="like" follow="{{item.slug}}" ng-click="item.followed = !item.followed">
 			<a ng-class="{'active':item.followed}"><i class="icon-thumbs-up"></i></a><span ng-show="item.followed"> bạn và </span> {{item.follows}} theo dõi
 		</div>
-		<div class="address" ng-if="item.address" >
-			{{item.address}}
+		<div class="address" ng-if="item.local">
+			<span ng-if="item.address">{{item.address}}, </span>{{item.local}}
 		</div>
 		<div id="gmap" ng-if="item.map">
 			<div class="google-map"

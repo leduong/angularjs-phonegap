@@ -31,25 +31,25 @@
 				<div ng-switch-when="realestate" ng-show="isRealEstate">
 					<div class="one-half">
 						<div class="image">
-							<a href="#/post/{{item.link}}.html">
-							<img ng-src="http://www.nhadat.com/{{item.img}}" alt="{{item.title}}" class="img" />
+							<a ng-href="#/post/{{item.id}}.html">
+							<img ng-src="{{item.img}}" alt="{{item.title}}" class="img" />
 							</a>
 							<div class="tags">
-								<a ng-repeat="(tag,name) in item.tag" class="label btn-tag" href="#/tag/{{tag}}.html">{{name| characters:16}}</a>
+								<a ng-repeat="(tag,name) in item.tag" ng-if="tag" class="label btn-tag" ng-href="#/tag/{{tag}}.html">{{name| characters:16}}</a>
 							</div>
 							<div class="price" ng-if="item.meta.rent" ng-bind-html="item.meta.rent|rentify|unsafe"></div>
 							<div class="price" ng-if="!item.meta.rent" ng-show="item.meta.price" ng-bind-html="item.meta.price|pricify|unsafe"></div>
 						</div>
 					</div>
 					<div class="one-half">
-						<div class="text" go="#/post/{{item.link}}.html">
+						<div class="text" go-click="#/post/{{item.id}}.html">
 							<div ng-bind-html="item.text|characters:64|unsafe"></div>
 							<small class="address" ng-show="item.meta.address">{{item.meta.address| characters:48}}</small>
 						</div>
 						<div class="info">
 							<div class="agent">
 								<a ng-show="item.user.username" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
-								<img ng-src="http://www.nhadat.com/thumb.php?t=a&w=50&h=50&src={{item.user.image}}" alt="{{item.user.name}}" /> <b>{{item.user.name}}</b>
+								<img ng-src="http://nhadat.com/thumb.php?t=a&w=50&h=50&src={{item.user.image}}" alt="{{item.user.name}}" /> <b>{{item.user.name}}</b>
 								</a>
 								<span ng-show="!item.user.username" >{{item.user.name}}</span>
 							</div>
@@ -62,14 +62,19 @@
 				</div>
 				<!-- / ng-switch then="realestate" -->
 				<div ng-switch-when="status" ng-show="isStatus">
-					<div class="feed">
+					<div class="feed" go-click="#/comment/{{item.id}}.html">
 						<div class="user">
-							<a class="pull-left" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
-							<img ng-src="http://www.nhadat.com/thumb.php?w=50&h=50&t=a&src={{item.user.image}}" alt="" />
+							<a class="pull-left" ng-if="!item.user.username" ng-href="#/profile/{{item.user.id}}.html">
+							<img ng-src="http://nhadat.com/thumb.php?w=50&h=50&t=a&src={{item.user.image}}" alt="" />
+							</a>
+							<a class="pull-left" ng-if="item.user.username" ng-href="#/profile/{{item.user.username}}.html">
+							<img ng-src="http://nhadat.com/thumb.php?w=50&h=50&t=a&src={{item.user.image}}" alt="" />
 							</a>
 							<div class="name">
 								<div>
-									<a ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}"> <b>{{item.user.name}}</b>
+									<a ng-if="item.user.username" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}"> <b>{{item.user.name}}</b>
+									</a>
+									<a ng-if="!item.user.username" ng-href="#/profile/{{item.user.id}}.html" title="{{item.user.name}}"> <b>{{item.user.name}}</b>
 									</a>
 								</div>
 								<div class="datetime">
@@ -81,22 +86,22 @@
 							</div>
 						</div>
 						<div class="image" ng-hide ng-if="item.image[0]">
-							<a href="#/comment/{{item.link}}.html">
-							<img ng-src="http://www.nhadat.com/{{item.img}}" alt="{{item.title}}" />
+							<a ng-href="#/comment/{{item.id}}.html">
+							<img ng-src="http://nhadat.com/{{item.img}}" alt="{{item.title}}" />
 							</a>
 						</div>
 						<div class="video" ng-hide ng-if="item.video[0]">
 							<video width="100%" height="240" controls>
-							<source ng-src="http://www.nhadat.com/{{item.video[0]}}" type="video/mp4"></video>
+							<source ng-src="http://nhadat.com/{{item.video[0]}}" type="video/mp4"></video>
 						</div>
 						<div class="message" ng-bind-html="item.text|words:30|linky|fixbr|unsafe"></div>
 						<div class="attach" ng-hide ng-if="item.attach[0]">
-							<div ng-repeat="file in item.attach"> <i class="icon-paper-clip"></i>
-								<a href="http://www.nhadat.com/uploads/media/{{file}}" title="{{file}}" target="_blank">{{file}}</a>
+							<div ng-repeat="f in item.attach"> <i class="icon-paper-clip"></i>
+								<a href="http://nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
 							</div>
 						</div>
 						<div class="message" ng-if="item.tag.length">
-							<a ng-repeat="(k,v) in item.tag" class="btn btn-tag" href="#/tag/{{k}}.html">{{v}}</a>
+							<a ng-repeat="(k,v) in item.tag" class="btn btn-tag" ng-href="#/tag/{{k}}.html">{{v}}</a>
 						</div>
 						<div class="column likeshare">
 							<div class="one-third" like="{{item.id}}" ng-click="item.social.liked=item.social.liked+1">
@@ -105,7 +110,7 @@
 								<span ng-show="item.social.like">{{item.social.like}}</span>
 							</div>
 							<div class="one-third">
-								<a ng-class="{'active':item.social.commented>0}" href="#/comment/{{item.link}}.html"><i class="icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
+								<a ng-class="{'active':item.social.commented>0}" ng-href="#/comment/{{item.id}}.html"><i class="icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
 							</div>
 						</div>
 					</div>

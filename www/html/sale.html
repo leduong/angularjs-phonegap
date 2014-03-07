@@ -6,7 +6,7 @@
 					<input type="hidden" ng-init="form.type = ('realestate')" />
 					<input type="hidden" ng-init="form.tag = ([])" />
 					<textarea auto-grow ng-disabled="!login" ng-model="form.message" class="form-control" rows="5" placeholder="Cần bán hoặc cho thuê nhà... (rao như cách bạn rao vặt trên báo)" required></textarea>
-					<uploader action="http://www.nhadat.com/api/upload.html"></uploader>
+					<uploader action="http://nhadat.com/api/upload.html"></uploader>
 				</div>
 			</div>
 			<div ng-switch-when="two">
@@ -23,32 +23,27 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<p class="help-block">
-					Khi sang mặt bằng bạn có thể nhập cả giá chuyển nhượng ban đầu lẫn tiền thuê hàng tháng vào 2 ô ở trên. Tất cả tính bằng tiền đồng và tính cho cả căn.
+					<p>Giá tính cho <em>cả căn</em> (không tính giá theo m2).
+					</p>
+					<p>Khi sang mặt bằng (sang quán, sang nhà hàng, vv.) xin nhập cả giá chuyển nhượng ban đầu lẫn tiền thuê hàng tháng vào 2 ô ở trên.
 					</p>
 				</div>
 			</div>
 			<div ng-switch-when="three">
 				<div class="form-group">
 					<input type="text" class="form-control" ng-model="form.address" ng-change="suggests()" placeholder="Địa chỉ (khu nhà ở) hay phường xã, ..." />
-					<div ng-show="results">
-						<div>
-							Xin chọn địa danh hay tên hành chính đúng nhất (nếu không có, xin chọn mục "Không tìm thấy"):
-						</div>
-						<div class="loading" ng-show='busy'></div>
-						<div class="location">
-							<div class="radio">
-								<label>
-									<input type="radio" name="local" />
-									Không tìm thấy
-								</label>
-							</div>
-							<div class="radio" ng-repeat="k in results">
-								<label>
-									<input ng-click="gmap(k)" type="radio" name="local" />
-									{{k.long_name}}
-								</label>
-							</div>
+				</div>
+				<div class="form-group" ng-show="results">
+					<p>
+					Xin chọn địa danh hay tên hành chính đúng nhất (nếu không có, xin chọn mục "Không tìm thấy"):
+					</p>
+					<div class="loading" ng-show='busy'></div>
+					<div class="location">
+						<div class="radio" ng-repeat="k in results">
+							<label>
+								<input ng-click="gmap(k)" type="radio" name="local" ng-checked="(form.local==k.local)" />
+								{{k.long_name}}
+							</label>
 						</div>
 					</div>
 				</div>
@@ -86,7 +81,8 @@
 			<div ng-switch-when="five">
 				<div class="form-group">Xin hãy chọn những cụm từ mô tả mục rao của bạn:</div>
 				<div ng-show="tags">
-					<button ng-repeat="k in tags" class="btn btn-tag" ng-class="{'active':form.tag.indexOf(k) > -1}" ng-click="toggle(k)"
+					<button ng-repeat="k in tags" class="btn btn-tag" ng-class="{'active':form.tag.indexOf(k) >
+					-1}" ng-click="toggle(k)"
 					>{{k}}
 					</button>
 				</div>
@@ -99,7 +95,7 @@
 				</div>
 				<div class="form-group">
 					<div ng-hide ng-show="form.images" class="image">
-						<carousel slides="form.image" rent="form.rent" price="form.price"></carousel>
+						<carousel slides="form.images" rent="form.rent" price="form.price"></carousel>
 					</div>
 				</div>
 				<div class="group">

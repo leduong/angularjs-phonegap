@@ -87,7 +87,7 @@
 						<div class="location">
 							<div class="radio" ng-repeat="k in results">
 								<label>
-									<input ng-click="gmap(k)" type="radio" name="local" />
+									<input ng-click="gmap(k)" type="radio" name="local" ng-checked="(form.local==k.local)" />
 									{{k.long_name}}
 								</label>
 							</div>

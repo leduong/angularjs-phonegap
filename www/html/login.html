@@ -15,8 +15,8 @@
 					</p>
 				</div>
 			</div>
-			<form role="form" ng-submit="login()">
-				<div ng-switch="CurrentStep()" ng-animate="'animate'">
+			<form role="form">
+				<div ng-switch="CurrentStep()">
 					<div ng-switch-when="one">
 						<div class="form-group">
 							<input class="form-control" type="text" name="email" placeholder="Địa chỉ email hoặc số ĐT di dộng ở VN" ng-model="credentials.user" required />
@@ -24,21 +24,30 @@
 					</div>
 					<div ng-switch-when="two">
 						<div class="form-group">
-							<p>Vui lòng soạn tin nhắn "REG NDCC" và gởi 8077 bằng số điện thoại {{credentials.user}} để lấy mã số xác nhận</p>
-							<input class="form-control" type="password" name="password" placeholder="Mật khẩu" ng-model="credentials.password" required />
+							<input class="form-control" type="text" placeholder="Mã số xác nhận" ng-model="credentials.password" required />
 						</div>
+						<div class="form-group">
+						<p>Vui lòng soạn tin nhắn với nội dung "<b>REG NDCC</b>" và gởi <b>8077</b> (chỉ 500 đồng/tin) bằng số điện thoại <b>{{credentials.user|tel}}</b> để lấy mật khẩu tạm thời.</p>
+					</div>
 					</div>
 					<div ng-switch-when="three">
 						<div class="form-group">
-							<p>Vui lòng kiểm tra e-mail {{credentials.user}} để lấy mã số xác nhận</p>
-							<input class="form-control" type="password" name="password" placeholder="Mật khẩu" ng-model="credentials.password" required />
+							<input class="form-control" type="text" placeholder="Mã số xác nhận" ng-model="credentials.password" required />
+							<p>Vui lòng kiểm tra e-mail <b>{{credentials.user|lowercase}}</b> để lấy mã số xác nhận.</p>
 						</div>
 					</div>
 					<div ng-switch-when="four">
 						<div class="form-group">
-							<input class="form-control" type="password" name="password" placeholder="Mật khẩu" ng-model="credentials.password" required />
+							<input class="form-control" type="password" placeholder="Mật khẩu" ng-model="credentials.password" required />
+						</div>
+						<div class="form-group">
 							<p class="help-block">
-							Nếu quên mật khẩu, hãy sử dụng số điện thoại đã đăng ký soạn tin nhắn "REG NDCC" và gởi 8077 bằng số điện thoại đã đăng ký để lấy mật khẩu mới
+							<div ng-show="phone">
+								Nếu quên hay chưa có mật khẩu, hãy soạn tin nhắn với nội dung "<b>REG NDCC</b>" và gởi <b>8077</b> (chỉ 500 đồng/tin) bằng số điện thoại <b>{{credentials.user|tel}}</b>.
+							</div>
+							<div ng-show="email">
+								Nếu quên hay chưa có mật khẩu, hãy <a ng-click="resetpw()">bấm vào đây để lấy mật khẩu mới</a> qua địa chỉ email <b>{{credentials.user}}</b>.
+							</div>
 							</p>
 						</div>
 					</div>
@@ -51,5 +60,6 @@
 				</div>
 			</form>
 		</div>
+		<div class="clearfix"></div>
 	</div>
 </div>
