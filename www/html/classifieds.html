@@ -44,7 +44,7 @@
 					<div class="one-half">
 						<div class="text" go-click="#/post/{{item.id}}.html">
 							<div ng-bind-html="item.text|characters:64|unsafe"></div>
-							<small class="address" ng-show="item.meta.address">{{item.meta.address| characters:48}}</small>
+							<small class="address" ng-show="item.meta.local">{{item.meta.local| characters:48}}</small>
 						</div>
 						<div class="info">
 							<div class="agent">
