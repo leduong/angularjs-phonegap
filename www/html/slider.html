@@ -6,7 +6,7 @@
 		<div class="carousel-inner">
 			<div class="item slide-animation" ng-class="{'active':isSlide($index)}" ng-repeat="item in slides" ng-swipe-right="next()" ng-swipe-left="prev()" ng-hide="!isSlide($index)">
 				<a ng-href="#/post/{{item.id}}.html">
-				<img class="img-responsive" ng-src="http://www.nhadat.com/thumb.php?w=650&h=650&t=m&src={{item.img}}" alt="" /></a>
+				<img class="img-responsive" ng-src="http://static.nhadat.com/640/media/{{item.img}}" alt="" /></a>
 				<div class="price" ng-if="item.meta.rent" ng-bind-html="item.meta.rent|rentify|unsafe"></div>
 				<div class="price" ng-if="!item.meta.rent" ng-show="item.meta.price" ng-bind-html="item.meta.price|pricify|unsafe"></div>
 			</div>

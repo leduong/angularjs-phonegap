@@ -10,13 +10,13 @@
 				<carousel slides="item.image" rent="item.meta.rent" price="item.meta.price"></carousel>
 			</div>
 			<div ng-hide="item.image" class="image">
-				<img ng-src="http://nhadat.com/{{item.img}}" alt="" />
+				<img ng-src="{{item.img}}" alt="" />
 				<div class="price" ng-if="item.meta.rent" ng-bind-html="item.meta.rent|rentify|unsafe"></div>
 				<div class="price" ng-if="!item.meta.rent" ng-show="item.meta.price" ng-bind-html="item.meta.price|pricify|unsafe"></div>
 			</div>
 			<div class="attach" ng-hide ng-show="item.attach">
 				<div ng-repeat="f in item.attach">
-					<i class="icon-paper-clip"></i> <a href="http://nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
+					<i class="icon-paper-clip"></i> <a href="http://static.nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
 				</div>
 			</div>
 			<div class="tag" ng-show="item.tags">
@@ -38,10 +38,10 @@
 			<div class="one-half">
 				<div class="image">
 					<a ng-if="item.user.username" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
-					<img ng-src="http://nhadat.com/{{item.user.image}}" alt="{{item.user.name}}" />
+					<img ng-src="{{item.user.image}}" alt="{{item.user.name}}" />
 					</a>
 					<a ng-if="!item.user.username" title="{{item.user.name}}">
-					<img ng-src="http://nhadat.com/{{item.user.image}}" alt="{{item.user.name}}" />
+					<img ng-src="{{item.user.image}}" alt="{{item.user.name}}" />
 					</a>
 				</div>
 			</div>

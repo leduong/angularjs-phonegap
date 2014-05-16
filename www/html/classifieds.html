@@ -32,7 +32,7 @@
 					<div class="one-half">
 						<div class="image">
 							<a ng-href="#/post/{{item.id}}.html">
-							<img ng-src="http://nhadat.com/{{item.img}}" alt="{{item.title}}" class="img" />
+							<img ng-src="http://static.nhadat.com/{{item.img}}" alt="" class="img" />
 							</a>
 							<div class="tags">
 								<a ng-repeat="(tag,name) in item.tag" ng-if="tag" class="label btn-tag" ng-href="#/tag/{{tag}}.html">{{name| characters:16}}</a>
@@ -49,7 +49,7 @@
 						<div class="info">
 							<div class="agent">
 								<a ng-show="item.user.username" ng-href="#/profile/{{item.user.username}}.html" title="{{item.user.name}}">
-								<img ng-src="http://nhadat.com/thumb.php?t=a&w=50&h=50&src={{item.user.image}}" alt="{{item.user.name}}" /> <b>{{item.user.name}}</b>
+								<img ng-src="http://static.nhadat.com/{{item.user.image}}" alt="{{item.user.name}}" /> <b>{{item.user.name}}</b>
 								</a>
 								<span ng-show="!item.user.username" >{{item.user.name}}</span>
 							</div>
@@ -65,10 +65,10 @@
 					<div class="feed" go-click="#/comment/{{item.id}}.html">
 						<div class="user">
 							<a class="pull-left" ng-if="!item.user.username" ng-href="#/profile/{{item.user.id}}.html">
-							<img ng-src="http://nhadat.com/thumb.php?w=50&h=50&t=a&src={{item.user.image}}" alt="" />
+							<img ng-src="http://static.nhadat.com/{{item.user.image}}" alt="" />
 							</a>
 							<a class="pull-left" ng-if="item.user.username" ng-href="#/profile/{{item.user.username}}.html">
-							<img ng-src="http://nhadat.com/thumb.php?w=50&h=50&t=a&src={{item.user.image}}" alt="" />
+							<img ng-src="http://static.nhadat.com/{{item.user.image}}" alt="" />
 							</a>
 							<div class="name">
 								<div>
@@ -87,17 +87,13 @@
 						</div>
 						<div class="image" ng-hide ng-if="item.image[0]">
 							<a ng-href="#/comment/{{item.id}}.html">
-							<img ng-src="http://nhadat.com/{{item.img}}" alt="{{item.title}}" />
+							<img ng-src="http://static.nhadat.com/640/media/{{item.image[0]}}" alt="" />
 							</a>
-						</div>
-						<div class="video" ng-hide ng-if="item.video[0]">
-							<video width="100%" height="240" controls>
-							<source ng-src="http://nhadat.com/{{item.video[0]}}" type="video/mp4"></video>
 						</div>
 						<div class="message" ng-bind-html="item.text|words:30|linky|fixbr|unsafe"></div>
 						<div class="attach" ng-hide ng-if="item.attach[0]">
 							<div ng-repeat="f in item.attach"> <i class="icon-paper-clip"></i>
-								<a href="http://nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
+								<a href="http://static.nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
 							</div>
 						</div>
 						<div class="message" ng-if="item.tag.length">
