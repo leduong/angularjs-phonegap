@@ -37,5 +37,6 @@ www/js/build.sh
 www/js/controllers.js
 www/js/directives.js
 www/js/filters.js
-www/js/nhadat.annotated.js
 www/js/services.js
+www/js/nhadat.js
+www/js/nhadat.annotated.js

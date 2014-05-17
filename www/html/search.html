@@ -61,13 +61,13 @@
 				<button class="btn btn-xs btn-default">RAO BÁN<br />tại {{item.name}}</button> <button class="btn btn-xs btn-default">TRAO ĐỔI<br /> về {{item.name}}</button-->
 			</div>
 			<div class="tag" ng-show="item.tags">
-				<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+				<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
 			</div>
 			<div class="like" follow="{{item.slug}}">
 				<a ng-class="{'active':item.followed}"><i class="icon-thumbs-up"></i></a>{{item.follows}} theo dõi
 			</div>
 			<div class="tag" ng-show="item.locals">
-				<a ng-repeat="(k,v) in item.locals" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+				<a ng-repeat="(k,v) in item.locals" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
 			</div>
 			<div class="address" ng-if="item.local">
 				<span ng-if="item.address">{{item.address}}, </span>{{item.local}}

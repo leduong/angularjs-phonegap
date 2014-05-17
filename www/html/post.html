@@ -25,11 +25,11 @@
 				</div>
 			</div>
 			<div class="tag" ng-show="item.tags">
-				<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+				<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
 			</div>
 			<div class="message" ng-bind-html="item.message|linky|fixbr|unsafe"></div>
 			<div ng-show="item.meta.local">
-				<a ng-repeat="(k,v) in item.meta.local" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+				<a ng-repeat="(k,v) in item.meta.local" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
 			</div>
 			<div class="address" ng-bind="item.meta.address"></div>
 			<div id="gmap" ng-if="item.meta.map">
@@ -53,7 +53,7 @@
 			<div class="column">
 				<div class="one-half">
 					<div class="image">
-						<a ng-if="item.user.username" ng-href="/profile/{{item.user.username}}.html" title="{{item.user.name}}">
+						<a ng-if="item.user.username" go-click="/profile/{{item.user.username}}.html" title="{{item.user.name}}">
 						<img ng-src="{{item.user.image}}" alt="{{item.user.name}}" />
 						</a>
 						<a ng-if="!item.user.username" title="{{item.user.name}}">
@@ -64,7 +64,7 @@
 				<div class="two-half">
 					<div class="info">
 						<div class="name">
-							<a ng-if="item.user.username" ng-href="/profile/{{item.user.username}}.html" title="{{item.user.name}}">
+							<a ng-if="item.user.username" go-click="/profile/{{item.user.username}}.html" title="{{item.user.name}}">
 							{{item.user.name}}
 							</a>
 							<a ng-if="!item.user.username" title="{{item.user.name}}">

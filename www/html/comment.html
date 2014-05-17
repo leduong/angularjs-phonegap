@@ -12,10 +12,10 @@
 	</div>
 	<div class="feed">
 		<div class="user">
-			<a class="pull-left" ng-href="/profile/{{item.user.username}}.html" ng-if="item.user.username"><img ng-src="{{item.user.image}}" alt="" /></a>
+			<a class="pull-left" go-click="/profile/{{item.user.username}}.html" ng-if="item.user.username"><img ng-src="{{item.user.image}}" alt="" /></a>
 			<a class="pull-left" ng-if="!item.user.username"><img ng-src="{{item.user.image}}" alt="" /></a>
 			<div class="name">
-				<div><a ng-href="/profile/{{item.user.username}}.html" ng-if="item.user.username">
+				<div><a go-click="/profile/{{item.user.username}}.html" ng-if="item.user.username">
 					<b>{{item.user.name}}</b>
 				</a>
 				<a ng-if="!item.user.username">
@@ -28,11 +28,11 @@
 			<carousel slides="item.image"></carousel>
 		</div>
 		<div class="tag" ng-show="item.tags">
-			<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+			<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
 		</div>
 		<div class="message" ng-bind-html="item.message|linky|fixbr|unsafe"></div>
 		<div class="tag" ng-show="item.meta.local">
-			<a ng-repeat="(k,v) in item.meta.local" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+			<a ng-repeat="(k,v) in item.meta.local" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
 		</div>
 		<div class="attach" ng-hide ng-show="item.attach">
 			<div ng-repeat="f in item.attach">
