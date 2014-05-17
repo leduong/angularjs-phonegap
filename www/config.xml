@@ -2,9 +2,9 @@
 <widget id="com.nhadat.app" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Nhà Đất</name>
     <description>
-        Mạng xã hội Nhà Đất.
+        Mạng xã hội mua bán Nhà Đất.
     </description>
-    <author email="support@nhadat.com" href="http://nhadat.com">
+    <author email="cskh@nhadat.com" href="http://nhadat.com">
         Nha Dat Team
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
