@@ -7,9 +7,18 @@
 		</div>
 		<h1>{{item.name}}</h1>
 		<p ng-if="item.long_name" ng-bind-html="item.long_name|unsafe"></p>
-		<p class="by" ng-if="item.by_name">Đầu tiên được tạo bởi {{item.by_name}}</p>
-		<div class="like" follow="{{item.slug}}" ng-click="item.followed = !item.followed">
-			<a ng-class="{'active':item.followed}"><i class="icon-thumbs-up"></i></a><span ng-show="item.followed"> bạn và </span> {{item.follows}} theo dõi
+		<div class="by center" ng-if="item.by_name"><em>Địa danh được tạo đầu tiên bởi {{item.by_name}}.</em>
+		<!--br />
+		<button class="btn btn-xs btn-default">RAO BÁN<br />tại {{item.name}}</button> <button class="btn btn-xs btn-default">TRAO ĐỔI<br /> về {{item.name}}</button-->
+		</div>
+		<div class="tag" ng-show="item.tags">
+			<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+		</div>
+		<div class="like" follow="{{item.slug}}">
+			<a ng-class="{'active':item.followed}"><i class="icon-thumbs-up"></i></a>{{item.follows}} theo dõi
+		</div>
+		<div class="tag" ng-show="item.locals">
+			<a ng-repeat="(k,v) in item.locals" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
 		</div>
 		<div class="address" ng-if="item.local">
 			<span ng-if="item.address">{{item.address}}, </span>{{item.local}}

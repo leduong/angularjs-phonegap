@@ -2,11 +2,14 @@
 	<form role="form">
 		<div ng-switch="CurrentStep()">
 			<div ng-switch-when="one">
-				<div class="content">
+				<div class="content row">
 					<input type="hidden" ng-init="form.type = ('status')" />
 					<input type="hidden" ng-init="form.tag = ([])" />
-					<textarea auto-grow ng-disabled="!login" ng-model="form.message" class="form-control" rows="5" placeholder="Bạn đang nghĩ gì..."></textarea>
-					<uploader action="http://nhadat.com/api/upload.html"></uploader>
+					<textarea auto-grow ng-disabled="!login" ng-model="form.message" class="form-control" rows="5" placeholder="Chia sẻ suy nghĩ, hình ảnh, hay thông tin bạn có về 1 địa danh hay 1 chủ đề sôi động của thị trường"></textarea>
+					<uploader action="/api/upload.html"></uploader>
+				</div>
+				<div class="form-group row">
+					Nhớ kèm các từ khóa quan trọng (như Villa HQ, biệt thự, vv) trong mô tả để nhadat.com có thể đề nghị từ khóa dễ dàng nhất.
 				</div>
 			</div>
 			<div ng-switch-when="two">
@@ -16,6 +19,9 @@
 				<div ng-show="tags">
 					<button ng-repeat="k in tags" class="btn btn-tag" ng-class="{'active':form.tag.indexOf(k) > -1}" ng-click="toggle(k)"
 					>{{k}}</button>
+					<div>
+						<button ng-click="Tags()" class="btn btn-default btn-xs">Xem thêm...</button>
+					</div>
 				</div>
 				<div class="form-group">
 					Để nhadat.com tìm được nhiều cụm từ phù hợp hơn xin hãy bấm "Trở lại" và mô tả chi tiết hơn.

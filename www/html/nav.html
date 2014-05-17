@@ -1,17 +1,17 @@
 <nav>
 	<ul class="menu">
 		<li ng-class="navClass('search.html')">
-			<a ng-href="#/search.html" class="nav-search">
+			<a ng-href="/search.html" class="nav-search">
 				<div class="text">Tìm kiếm</div>
 			</a>
 		</li>
 		<li ng-class="navClass('sale.html')">
-			<a ng-href="#/sale.html" title="Rao bán" class="nav-sale">
+			<a ng-href="/sale.html" title="Rao bán" class="nav-sale">
 				<div class="text">Rao bán</div>
 			</a>
 		</li>
 		<li ng-class="navClass('share.html')">
-			<a ng-href="#/share.html" title="Tin nhắn" class="nav-msg">
+			<a ng-href="/share.html" title="Tin nhắn" class="nav-msg">
 				<div class="text">Trao đổi</div>
 			</a>
 		</li>
@@ -24,30 +24,30 @@
 	<div collapse="!isMenu">
 		<ul id="nav-menu">
 			<li ng-show="isLogin">
-				<a ng-href="#/profile/{{User.username}}.html" ng-if="User.username">
+				<a ng-href="/profile/{{User.username}}.html" ng-if="User.username">
 					Xin chào, <b>{{User.first_name}}</b>
 				</a>
-				<a ng-href="#/profile/{{User.idu}}.html" ng-if="!User.username">
+				<a ng-href="/profile/{{User.idu}}.html" ng-if="!User.username">
 					Xin chào, <b>{{User.first_name}}</b>
 				</a>
 			</li>
 			<li ng-show="!isLogin">
-				<a ng-href="#/login.html">Đăng nhập / Đăng ký</a>
+				<a ng-href="/login.html">Đăng ký</a>
 			</li>
 			<li ng-show="isLogin">
-				<a ng-href="#/update.html">Cập nhập tài khoản</a>
+				<a ng-href="/update.html">Cập nhập tài khoản</a>
+			</li>
+			<!--li ng-show="isLogin">
+				<a ng-href="/agent.html">Đăng ký tài khoản nhà môi giới</a>
+			</li-->
+			<li ng-show="isLogin">
+				<a ng-href="/logout.html" ng-click="logout();">Đăng xuất</a>
 			</li>
 			<li ng-show="isLogin">
-				<a ng-href="#/agent.html">Đăng ký tài khoản nhà môi giới</a>
-			</li>
-			<li ng-show="isLogin">
-				<a ng-href="#/logout.html" ng-click="logout();">Đăng xuất</a>
-			</li>
-			<li ng-show="isLogin">
-				<a ng-href="#/diadanh.html">Tạo địa danh</a>
+				<a ng-href="/diadanh.html">Tạo địa danh</a>
 			</li>
 			<li>
-				<a ng-href="#/contact/index.html">Liên hệ / Góp ý /  Báo lỗi</a>
+				<a ng-href="/contact/index.html">Liên hệ / Góp ý /  Báo lỗi</a>
 			</li>
 			<li>
 				<a href="tel:0906773566" title="">Gọi hotline: <b style="color: red">(090) 677 3566</b></a>

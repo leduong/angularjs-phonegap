@@ -1,12 +1,13 @@
 <div ng-controller="TypeaheadCtrl">
 	<div class="search">
-		<form class="form-inline" ng-submit="search()">
-			<input ng-change="search()" autocomplete="off" type="text" placeholder="Địa danh, chủ đề hay từ bất kỳ..." ng-model="keyword" typeahead="v for v in suggests($viewValue) | filter:$viewValue | limitTo:8" />
-			<div class="icon"> <i class="icon-search"></i></div>
+		<form class="form-inline">
+			<tags-input ng-model="keyword" class="bootstrap" placeholder="Địa danh, chủ đề hay từ bất kỳ..." replace-spaces-with-dashes="false" add-on-blur="false" add-on-comma="false" add-on-space="false" add-on-enter="false">
+			<auto-complete source="suggests($query)"></auto-complete>
+			</tags-input>
 		</form>
 	</div>
-	<div class="container-fluid" ng-show="results.length < 1">
-		<div class="container">
+	<div class="container-fluid" ng-show="follows">
+		<div class="container" ng-show="isFirst">
 			<p>Tìm kiếm như Google!</p>
 			<p>
 			Bạn đánh một vài chữ và nhadat.com sẽ hiểu bạn đang tìm gì. Ví dụ:
@@ -16,12 +17,77 @@
 				<li>Đánh "Hai" rồi chọn "Hải Phòng", hay</li>
 				<li>Đánh "Ben" rồi chọn "P Bến Nghé, Q1", hay</li>
 				<li>Đánh "nha" rồi chọn "cho thuê nhà trọ", hay</li>
-				<li>Đánh "1" rồi chọn "dưới 1 tỉ đ"</li>
+				<li>Đánh "1 ti" rồi chọn "dưới 1 tỉ đ"</li>
 			</ul>
 		</div>
-		<follows ng-controller="FollowCtrl"></follows>
+		<div class="follows" ng-show="isFollow">
+			<h5>Tìm thấy	<span ng-show="(follows.city.length>0)"> {{follows.city.length}} tỉnh thành</span>
+			<span ng-show="(follows.group.length>0)"> {{follows.group.length}} địa danh</span>
+			<span ng-show="(follows.topic.length>0)"> {{follows.topic.length}} chủ đề</span>
+			</h5>
+			<div class="content">
+				<div ng-show="follows.city">
+					<h5>Tỉnh thành</h5>
+					<p>
+					<a ng-repeat="t in follows.city" class="btn btn-tag" ng-click="addkeyword(t.text)">{{t.text}}</a>
+					</p>
+				</div>
+				<div ng-show="follows.group">
+					<h5>Địa danh</h5>
+					<p>
+					<a ng-repeat="t in follows.group" class="btn btn-tag" ng-click="addkeyword(t.text)">{{t.text}}</a>
+					</p>
+				</div>
+				<div ng-show="follows.topic">
+					<h5>Chủ đề</h5>
+					<p>
+					<a ng-repeat="t in follows.topic" class="btn btn-tag" ng-click="addkeyword(t.text)">{{t.text}}</a>
+					</p>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="container-fluid" ng-show="results">
+	<div class="group" ng-show="item">
+		<div class="container-fluid">
+			<div ng-switch on="item.type">
+				<div class="map-marker" ng-switch-when="city"><i class="vietnam"></i></div>
+				<div class="map-marker" ng-switch-when="group"><i class="icon-map-marker"></i></div>
+				<div class="map-marker" ng-switch-when="topic"><i class="icon-key"></i></div>
+			</div>
+			<h1>{{item.name}}</h1>
+			<p ng-if="item.long_name" ng-bind-html="item.long_name|unsafe"></p>
+			<div class="by center" ng-if="item.by_name"><em>Địa danh được tạo đầu tiên bởi {{item.by_name}}.</em>
+				<!--br />
+				<button class="btn btn-xs btn-default">RAO BÁN<br />tại {{item.name}}</button> <button class="btn btn-xs btn-default">TRAO ĐỔI<br /> về {{item.name}}</button-->
+			</div>
+			<div class="tag" ng-show="item.tags">
+				<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+			</div>
+			<div class="like" follow="{{item.slug}}">
+				<a ng-class="{'active':item.followed}"><i class="icon-thumbs-up"></i></a>{{item.follows}} theo dõi
+			</div>
+			<div class="tag" ng-show="item.locals">
+				<a ng-repeat="(k,v) in item.locals" class="btn btn-tag" ng-href="/t/{{k}}.html">{{v}}</a>
+			</div>
+			<div class="address" ng-if="item.local">
+				<span ng-if="item.address">{{item.address}}, </span>{{item.local}}
+			</div>
+			<div id="gmap" ng-if="item.map">
+				<div class="google-map"
+					center="position.coords"
+					zoom="zoom"
+					markers="markers"
+					latitude="latitude"
+					longitude="longitude"
+					events="events"
+					mark-click="false"
+					draggable="false"
+					fit="true">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-show="results">
 		<classifieds></classifieds>
 	</div>
 </div>

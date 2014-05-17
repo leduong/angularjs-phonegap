@@ -6,7 +6,7 @@
 					<input type="hidden" ng-init="form.type = ('realestate')" />
 					<input type="hidden" ng-init="form.tag = ([])" />
 					<textarea auto-grow ng-disabled="!login" ng-model="form.message" class="form-control" rows="5" placeholder="Cần bán hoặc cho thuê nhà... (rao như cách bạn rao vặt trên báo)" required></textarea>
-					<uploader action="http://nhadat.com/api/upload.html"></uploader>
+					<uploader action="/api/upload.html"></uploader>
 				</div>
 			</div>
 			<div ng-switch-when="two">
@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<p>Giá tính cho <em>cả căn</em> (không tính giá theo m2).
+					<p>Giá bán cho  <em>cả căn</em> (không tính theo m2). Nếu bạn rao cho 1 nhóm sản phẩm, hãy rao giá của căn rẻ nhất.
 					</p>
 					<p>Khi sang mặt bằng (sang quán, sang nhà hàng, vv.) xin nhập cả giá chuyển nhượng ban đầu lẫn tiền thuê hàng tháng vào 2 ô ở trên.
 					</p>
@@ -31,17 +31,18 @@
 			</div>
 			<div ng-switch-when="three">
 				<div class="form-group">
-					<input type="text" class="form-control" ng-model="form.address" ng-change="suggests()" placeholder="Địa chỉ (khu nhà ở) hay phường xã, ..." />
+					<input type="text" class="form-control" ng-model="form.address" placeholder="Số nhà, tên đường, khu phố vv" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="form.local1" ng-change="suggests()" placeholder="Địa danh hay Phường xã, Quận huyện,..." />
 				</div>
 				<div class="form-group" ng-show="results">
-					<p>
-					Xin chọn địa danh hay tên hành chính đúng nhất (nếu không có, xin chọn mục "Không tìm thấy"):
-					</p>
+					<div>Xin xác nhận địa chỉ hành chính như sau:</div>
 					<div class="loading" ng-show='busy'></div>
 					<div class="location">
 						<div class="radio" ng-repeat="k in results">
 							<label>
-								<input ng-click="gmap(k)" type="radio" name="local" ng-checked="(form.local==k.local)" />
+								<input ng-click="gmap(k)" type="radio" ng-checked="(form.local==k.local)" />
 								{{k.long_name}}
 							</label>
 						</div>
@@ -85,6 +86,9 @@
 					-1}" ng-click="toggle(k)"
 					>{{k}}
 					</button>
+					<div>
+						<button ng-click="Tags()" class="btn btn-default btn-xs">Thêm nữa...</button>
+					</div>
 				</div>
 			</div>
 			<div ng-switch-when="six">

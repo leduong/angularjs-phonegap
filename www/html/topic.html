@@ -1,0 +1,15 @@
+<div ng-controller="TopicCtrl">
+	<div class="group">
+		<div class="container">
+			<div class="map-marker"><i class="icon-key"></i></div>
+			<h1>
+			{{topic.name}}</h1>
+			<p>{{topic.description| characters:64 :true}}</p>
+			<div class="like">
+				<a follow="{{topic.slug}}" ng-class="{'active':liked}" ng-click="liked = !liked">
+				<i class="icon-thumbs-up"></i></a> <span ng-show="liked"> bạn và </span> {{likes}} theo dõi
+			</div>
+		</div>
+	</div>
+	<classifieds></classifieds>
+</div>

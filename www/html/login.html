@@ -2,16 +2,9 @@
 	<div class="join">
 		<div class="container-fluid">
 			<div class="media">
-				<a class="pull-left">
-				<i class="media-object i-email"></i>
-				</a>
 				<div class="media-body">
-					<h1 class="media-heading">Đăng nhập/Đăng ký</h1>
 					<p>
-					Xin đăng ký/đăng nhập bằng số điện thoại di động ở Việt Nam hoặc địa chỉ email.
-					</p>
-					<p>
-					Chúng tôi không chia sẻ thông tin của bạn cho bất kỳ ai.
+					Đăng ký bằng ĐT di động hay email
 					</p>
 				</div>
 			</div>
@@ -21,6 +14,9 @@
 						<div class="form-group">
 							<input class="form-control" type="text" name="email" placeholder="Địa chỉ email hoặc số ĐT di dộng ở VN" ng-model="credentials.user" required />
 						</div>
+						<p>
+						Chúng tôi không chia sẻ thông tin của bạn cho bất kỳ ai.
+						</p>
 					</div>
 					<div ng-switch-when="two">
 						<div class="form-group">
@@ -33,8 +29,8 @@
 					<div ng-switch-when="three">
 						<div class="form-group">
 							<input class="form-control" type="text" placeholder="Mã số xác nhận" ng-model="credentials.password" required />
-							<p>Vui lòng kiểm tra e-mail <b>{{credentials.user|lowercase}}</b> để lấy mã số xác nhận.</p>
 						</div>
+						<p>Vui lòng kiểm tra e-mail <b>{{credentials.user|lowercase}}</b> để lấy mã số xác nhận.</p>
 					</div>
 					<div ng-switch-when="four">
 						<div class="form-group">

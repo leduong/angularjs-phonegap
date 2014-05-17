@@ -2,18 +2,18 @@
 	<div class="container-fluid">
 		<div class="profile">
 			<div class="image">
-				<img ng-src="http://www.nhadat.com/thumb.php?t=c&w=630&h=630&src={{user.cover}}" alt="{{user.username}} cover" />
+				<img ng-src="/thumb.php?t=c&w=630&h=630&src={{user.cover}}" alt="{{user.username}} cover" />
 			</div>
 			<div class="column">
 				<div class="one-half">
 					<div class="name">
 						{{user.first_name}} {{user.last_name}}
 					</div>
-					<img ng-src="http://www.nhadat.com/thumb.php?t=a&w=112&h=112&src={{user.image}}" class="img-responsive" alt="" />
+					<img ng-src="/thumb.php?t=a&w=112&h=112&src={{user.image}}" class="img-responsive" alt="" />
 				</div>
 				<div class="one-half">
 					<div class="info" ng-show="user.username">
-						<a href="#/profile/{{user.username}}.html" title="{{user.username}}">{{user.username}}.nhadat.com</a>
+						<a ng-href="http://{{user.username}}.nhadat.com" title="{{user.username}}">{{user.username}}.nhadat.com</a>
 					</div>
 					<div class="callsms">
 						<a class="btn-call" href="tel:{{user.phone}}">Gọi</a>
@@ -26,5 +26,6 @@
 			</div>
 		</div>
 	</div>
+	<slider></slider>
 	<classifieds></classifieds>
 </div>

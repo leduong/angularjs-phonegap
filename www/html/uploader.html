@@ -1,7 +1,7 @@
 <!-- uploader.html template -->
 <div class="submit">
 	<div class="media">
-		<input multiple="multiple" type="file" ng-hide="true" name="uploader[]" onchange="angular.element(this).scope().sendFile(this);" />
+		<input multiple="" type="file" ng-hide="true" name="uploader[]" onchange="angular.element(this).scope().sendFile(this);" />
 		<a class="pull-left upload"><i class="icon-picture"></i></a>
 		<a class="pull-left upload"><i class="icon-paper-clip"></i></a>
 		<!--a class="pull-left upload" href="#"><i class="icon-facetime-video"></i></a>
@@ -14,7 +14,7 @@
 </div>
 <div class="thumbs">
 	<div ng-repeat="item in images" class="thumb">
-		<img ng-src="http://static.nhadat.com/100/media/{{item}}" alt="" />
+		<img ng-src="http://static.nhadat.com/100/media/{{item|thumb}}" alt="" />
 		<a ng-click="remove($index)"><i class="icon-remove"></i></a>
 	</div>
 </div>
