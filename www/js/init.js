@@ -24,7 +24,10 @@
 	};
 
 	var x_same_y = function() {
-		var y,x = $('body').width();
+		var y, x = $('body').width();
+		$('.frame').css({
+			'height': (x - 10) + 'px'
+		});
 		if (x > 360) {
 			y = x / 3;
 		} else {

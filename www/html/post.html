@@ -27,7 +27,7 @@
 			<div class="tag" ng-show="item.tags">
 				<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
 			</div>
-			<div class="message" ng-bind-html="item.message|linky|fixbr|unsafe"></div>
+			<div class="message" ng-bind-html="item.message|fixbr|bbcode|unsafe"></div>
 			<div ng-show="item.meta.local">
 				<a ng-repeat="(k,v) in item.meta.local" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
 			</div>
