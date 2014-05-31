@@ -120,7 +120,7 @@
 							<!--video width="100%" height="240" controls>
 						<source ng-src="{{item.video[0]}}" type="video/mp4"></video-->
 					</div>
-					<div class="message" ng-bind-html="item.text|words:120|fixbr|bbcode|unsafe"  go-click="/c/{{item.link}}.html"></div>
+					<div class="message" ng-bind-html="item.text|words:30|fixbr|bbcode|unsafe"  go-click="/c/{{item.link}}.html"></div>
 					<div class="attach" ng-hide ng-if="item.attach[0]">
 						<div ng-repeat="file in item.attach"> <i class="icon-paper-clip"></i>
 							<a href="/uploads/media/{{file}}" title="{{file}}" target="_blank">{{file}}</a>
