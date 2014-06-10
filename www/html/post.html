@@ -21,7 +21,7 @@
 			</div>
 			<div class="attach" ng-hide ng-show="item.attach">
 				<div ng-repeat="f in item.attach">
-					<i class="icon-paper-clip"></i> <a href="http://static.nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
+					<i class="icon icon-paper-clip"></i> <a href="http://static.nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
 				</div>
 			</div>
 			<div class="tag" ng-show="item.tags">
@@ -86,10 +86,10 @@
 			<div class="feed">
 				<div class="column likeshare">
 					<div class="one-third" like="{{item.id}}">
-						<a ng-class="{'active':item.social.liked>0}"><i class="icon-thumbs-up"></i></a> <span ng-show="item.social.like">{{item.social.like}}</span>
+						<a ng-class="{'active':item.social.liked>0}"><i class="icon icon-thumbs-up"></i></a> <span ng-show="item.social.like">{{item.social.like}}</span>
 					</div>
 					<div class="one-third">
-						<a ng-class="{'active':item.social.commented>0}"><i class="icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
+						<a ng-class="{'active':item.social.commented>0}"><i class="icon icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
 					</div>
 				</div>
 			</div>

@@ -1,12 +1,12 @@
 <div class="column" ng-controller="CommentsCtrl">
 	<div class="dropdown pull-right">
-		<a class="dropdown-toggle"><i class="icon-chevron-down"></i></a>
+		<a class="dropdown-toggle"><i class="icon icon-chevron-down"></i></a>
 		<ul class="dropdown-menu">
 			<li ng-show="user.idu==item.user.id">
-				<a remove="{{item.id}}"><i class="icon-trash"></i> Xóa tin</a>
+				<a remove="{{item.id}}"><i class="icon icon-trash"></i> Xóa tin</a>
 			</li>
 			<li ng-hide="user.idu==item.user.id">
-				<a report="{{item.id}}"><i class="icon-bug"></i> Báo cáo vi phạm</a>
+				<a report="{{item.id}}"><i class="icon icon-bug"></i> Báo cáo vi phạm</a>
 			</li>
 		</ul>
 	</div>
@@ -36,18 +36,18 @@
 		</div>
 		<div class="attach" ng-hide ng-show="item.attach">
 			<div ng-repeat="f in item.attach">
-				<i class="icon-paper-clip"></i> <a href="http://static.nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
+				<i class="icon icon-paper-clip"></i> <a href="http://static.nhadat.com/uploads/media/{{f}}" title="{{f}}" target="_blank">{{f}}</a>
 			</div>
 		</div>
 		<div class="column likeshare">
 			<div class="one-third" like="{{item.id}}">
-				<a ng-class="{'active':item.social.liked>0}"><i class="icon-thumbs-up"></i></a> <span ng-show="item.social.like">{{item.social.like}}</span>
+				<a ng-class="{'active':item.social.liked>0}"><i class="icon icon-thumbs-up"></i></a> <span ng-show="item.social.like">{{item.social.like}}</span>
 			</div>
 			<div class="one-third">
-				<a ng-class="{'active':item.social.commented>0}"><i class="icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
+				<a ng-class="{'active':item.social.commented>0}"><i class="icon icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
 			</div>
 			<!--div class="one-third">
-				<a ng-class="{'active':item.social.shared>0}" shared=""><i class="icon-share"></i> <span ng-show="item.social.share">{{item.social.share}}</span></a>
+				<a ng-class="{'active':item.social.shared>0}" shared=""><i class="icon icon-share"></i> <span ng-show="item.social.share">{{item.social.share}}</span></a>
 		</div-->
 	</div>
 </div>

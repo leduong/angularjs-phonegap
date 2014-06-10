@@ -17,13 +17,13 @@
 	<div infinite-scroll='results.nextPage()' infinite-scroll-disabled='results.busy' infinite-scroll-distance='1'>
 		<div class="column content" ng-repeat="item in results.items">
 			<div class="dropdown pull-right">
-				<a class="dropdown-toggle"><i class="icon-chevron-down"></i></a>
+				<a class="dropdown-toggle"><i class="icon icon-chevron-down"></i></a>
 				<ul class="dropdown-menu">
 					<li ng-show="user.idu==item.user.id">
-						<a remove="{{item.id}}"><i class="icon-trash"></i> Xóa tin</a>
+						<a remove="{{item.id}}"><i class="icon icon-trash"></i> Xóa tin</a>
 					</li>
 					<li ng-hide="user.idu==item.user.id">
-						<a report="{{item.id}}"><i class="icon-bug"></i> Báo cáo vi phạm</a>
+						<a report="{{item.id}}"><i class="icon icon-bug"></i> Báo cáo vi phạm</a>
 					</li>
 				</ul>
 			</div>
@@ -122,7 +122,7 @@
 					</div>
 					<div class="message" ng-bind-html="item.text|words:30|fixbr|bbcode|unsafe"  go-click="/c/{{item.link}}.html"></div>
 					<div class="attach" ng-hide ng-if="item.attach[0]">
-						<div ng-repeat="file in item.attach"> <i class="icon-paper-clip"></i>
+						<div ng-repeat="file in item.attach"> <i class="icon icon-paper-clip"></i>
 							<a href="/uploads/media/{{file}}" title="{{file}}" target="_blank">{{file}}</a>
 						</div>
 					</div>
@@ -132,11 +132,11 @@
 					<div class="column likeshare">
 						<div class="one-third" like="{{item.id}}">
 							<a ng-class="{'active':item.social.liked>0}">
-							<i class="icon-thumbs-up"></i></a>
+							<i class="icon icon-thumbs-up"></i></a>
 							<span ng-show="item.social.like">{{item.social.like}}</span>
 						</div>
 						<div class="one-third">
-							<a ng-class="{'active':item.social.commented>0}" go-click="/c/{{item.link}}.html"><i class="icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
+							<a ng-class="{'active':item.social.commented>0}" go-click="/c/{{item.link}}.html"><i class="icon icon-comment"></i></a> <span ng-show="item.social.comment">{{item.social.comment}}</span>
 						</div>
 					</div>
 				</div>
