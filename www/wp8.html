@@ -1,32 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Nhà đất</title>
-        <meta charset="utf-8">
-        <meta name="author" content="Le Dang Duong">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Le styles -->
-        <link href="css/normalize.css" rel="stylesheet" />
-        <link href="css/icon.css" rel="stylesheet" />
-        <link href="css/index.css" rel="stylesheet" />
-    </head>
-    <body ng-app="App">
-        <header id="header" class="">
-            
-        </header>
-        <!-- /header -->
-        <section>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </section>
-        <footer>
-            app-version
-        </footer>
-        <a href="#" class="scroll-top"><i class="icon icon-chevron-up"></i></a>
-    </body>
+	<head>
+		<title>Nhà đất</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Le Dang Duong">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Le styles -->
+		<link href="css/normalize.css" rel="stylesheet" />
+		<link href="css/icon.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+	</head>
+	<body ng-app="App">
+		<header id="header" class="">
+			<nav>
+				<ul class="menu">
+					<li ng-class="navClass('search.html')">
+						<a go-click="/search.html" class="nav-search">
+						<div class="text">Tìm kiếm</div>
+						</a>
+					</li>
+					<li ng-class="navClass('sale.html')">
+						<a go-click="/sale.html" title="Rao bán" class="nav-sale">
+						<div class="text">Rao bán</div>
+						</a>
+					</li>
+					<li ng-class="navClass('share.html')">
+						<a go-click="/share.html" title="Tin nhắn" class="nav-msg">
+						<div class="text">Trao đổi</div>
+						</a>
+					</li>
+					<li ng-class="{active:isMenu}">
+						<a ng-click="isMenu = !isMenu" class="nav-menu">
+						<div class="text">Menu</div>
+						</a>
+					</li>
+				</ul>
+				<div collapse="!isMenu">
+					<ul id="nav-menu">
+						<li ng-show="isLogin">
+							<a go-click="/profile/{{User.username}}.html" ng-if="User.username">
+							Xin chào, <b>{{User.first_name}}</b>
+							</a>
+							<a go-click="/profile/{{User.idu}}.html" ng-if="!User.username">
+							Xin chào, <b>{{User.first_name}}</b>
+							</a>
+						</li>
+						<li ng-show="!isLogin">
+							<a go-click="/login.html">Đăng ký</a>
+						</li>
+						<li ng-show="isLogin">
+							<a go-click="/update.html">Cập nhập tài khoản</a>
+						</li>
+						<li ng-show="isLogin">
+							<a go-click="/logout.html" ng-click="logout();">Đăng xuất</a>
+						</li>
+						<li ng-show="isLogin">
+							<a go-click="/diadanh.html">Tạo địa danh</a>
+						</li>
+						<li>
+							<a go-click="/contact/index.html">Liên hệ / Góp ý /  Báo lỗi</a>
+						</li>
+						<li>
+							<a href="tel:0906773566" title="">Gọi hotline: <b style="color: red">(090) 677 3566</b></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<!-- /header -->
+		<section>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</section>
+		<footer>
+			app-version
+		</footer>
+		<a href="#" class="scroll-top"><i class="icon icon-chevron-up"></i></a>
+	</body>
 </html>
