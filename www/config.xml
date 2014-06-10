@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.nhadat.app" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-	<name>Nhà Đất</name>
+	<name>nhadat.com</name>
 	<description>
 		Mạng xã hội mua bán Nhà Đất
 	</description>

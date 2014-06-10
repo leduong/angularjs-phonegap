@@ -11,19 +11,6 @@
         <link href="css/index.css" rel="stylesheet" />
     </head>
     <body ng-app="App">
-        <header ng-hide="isIntro">
-            <div class="nhadat">
-                <a go-click="/" title="nhadat">nhadat.com</a>
-            </div>
-        </header>
-        <!-- /Header -->
-        <div class="flash" ng-show="flash.msg" ng-click="flash.msg = ''">
-            <div class="alert alert-dismissable alert-{{flash.type}}">
-                <button type="button" class="close">&times;</button>
-                <div ng-bind-html="flash.msg|unsafe"></div>
-            </div>
-        </div>
-    <footer app-version></footer>
     <a href="#" class="scroll-top"><i class="icon icon-chevron-up"></i></a>
     <!-- Finally load libraries -->
     <script src="lib/jquery/jquery-1.10.2.min.js"></script>
@@ -36,9 +23,6 @@
     <script src="lib/TweenMax.min.js"></script>
     <script src="lib/underscore.min.js"></script>
     <!-- App load libraries -->
-    <script src="js/nhadat.min.js"></script>
-    <script src="js/ui-bootstrap.js"></script>
-    <script src="js/google-maps.js"></script>
     <!-- Themes -->
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=vi"></script>
     <script src="js/init.js"></script>
