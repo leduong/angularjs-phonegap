@@ -71,6 +71,12 @@
 				</div>
 			</nav>
 		</header>
+		<div class="flash" ng-show="flash.msg" ng-click="flash.msg = ''">
+			<div class="alert alert-dismissable alert-{{flash.type}}">
+				<button type="button" class="close">&times;</button>
+				{{flash.msg}}
+			</div>
+		</div>
 	<section ng-view></section>
 <footer app-version></footer>
 <a href="#" class="scroll-top"><i class="icon icon-chevron-up"></i></a>
