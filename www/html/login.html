@@ -1,0 +1,61 @@
+<div class="container-fluid" ng-controller="LoginCtrl">
+	<div class="join">
+		<div class="container-fluid">
+			<div class="media">
+				<div class="media-body">
+					<p>
+					Đăng ký bằng ĐT di động hay email
+					</p>
+				</div>
+			</div>
+			<form role="form">
+				<div ng-switch="CurrentStep()">
+					<div ng-switch-when="one">
+						<div class="form-group">
+							<input class="form-control" type="text" name="email" placeholder="Địa chỉ email hoặc số ĐT di dộng ở VN" ng-model="credentials.user" required />
+						</div>
+						<p>
+						Chúng tôi không chia sẻ thông tin của bạn cho bất kỳ ai.
+						</p>
+					</div>
+					<div ng-switch-when="two">
+						<div class="form-group">
+							<input class="form-control" type="text" placeholder="Mã số xác nhận" ng-model="credentials.password" required />
+						</div>
+						<div class="form-group">
+							<p>Chúng tôi vừa gửi mã xác nhận đến số điện thoại <b>{{credentials.user|tel}}</b> bằng tin nhắn. Xin kiểm tra tin nhắn và nhập mã xác nhận vào đây. Có thể mất đến vài phút tin nhắn mới đến nơi. Cảm ơn.</p>
+						</div>
+					</div>
+					<div ng-switch-when="three">
+						<div class="form-group">
+							<input class="form-control" type="text" placeholder="Mã số xác nhận" ng-model="credentials.password" required />
+						</div>
+						<p>Vui lòng kiểm tra e-mail <b>{{credentials.user|lowercase}}</b> để lấy mã số xác nhận.</p>
+					</div>
+					<div ng-switch-when="four">
+						<div class="form-group">
+							<input class="form-control" type="password" placeholder="Mật khẩu" ng-model="credentials.password" required />
+						</div>
+						<div class="form-group">
+							<p class="help-block">
+							<div ng-show="phone">
+								Nếu quên hay chưa có mật khẩu, hãy <a ng-click="resetpw()">bấm vào đây để lấy mật khẩu mới</a> qua số điện thoại <b>{{credentials.user}}</b>.
+							</div>
+							<div ng-show="email">
+								Nếu quên hay chưa có mật khẩu, hãy <a ng-click="resetpw()">bấm vào đây để lấy mật khẩu mới</a> qua địa chỉ email <b>{{credentials.user}}</b>.
+							</div>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="pull-right">
+					<a class="btn btn-default" ng-click="Previous()" ng-show="!isFirstStep()">
+					<i class="icon icon-arrow-left"></i> Trở lại
+					</a>
+					<a class="btn btn-primary" ng-click="Next()">{{NextLabel()}}</a>
+				</div>
+			</form>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
