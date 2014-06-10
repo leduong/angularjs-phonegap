@@ -12,7 +12,7 @@
 		<link href="css/index.css" rel="stylesheet" />
 	</head>
 	<body ng-app="App">
-		<header id="header" class="">
+		<header>
 			<div class="nhadat">
 				<a go-click="/" title="nhadat">nhadat.com</a>
 			</div>
@@ -71,33 +71,25 @@
 				</div>
 			</nav>
 		</header>
-		<!-- /header -->
-		<section>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</section>
-	<footer app-version></footer>
-	<a href="#" class="scroll-top"><i class="icon icon-chevron-up"></i></a>
-	<!-- Finally load libraries -->
-	<script src="lib/jquery/jquery-1.10.2.min.js"></script>
-	<script src="lib/jquery/jquery.form.min.js"></script>
-	<script src="lib/angular/angular.min.js"></script>
-	<script src="lib/angular/angular-route.min.js"></script>
-	<script src="lib/angular/angular-sanitize.min.js"></script>
-	<script src="lib/angular/angular-animate.min.js"></script>
-	<script src="lib/angular/angular-touch.min.js"></script>
-	<script src="lib/TweenMax.min.js"></script>
-	<script src="lib/underscore.min.js"></script>
-	<!-- App load libraries -->
-	<script src="js/nhadat.min.js"></script>
-	<script src="js/ui-bootstrap.js"></script>
-	<script src="js/google-maps.js"></script>
-	<!-- Themes -->
-	<script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=vi"></script>
-	<script src="js/init.js"></script>
+	<section ng-view></section>
+<footer app-version></footer>
+<a href="#" class="scroll-top"><i class="icon icon-chevron-up"></i></a>
+<!-- Finally load libraries -->
+<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+<script src="lib/jquery/jquery.form.min.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular/angular-route.min.js"></script>
+<script src="lib/angular/angular-sanitize.min.js"></script>
+<script src="lib/angular/angular-animate.min.js"></script>
+<script src="lib/angular/angular-touch.min.js"></script>
+<script src="lib/TweenMax.min.js"></script>
+<script src="lib/underscore.min.js"></script>
+<!-- App load libraries -->
+<script src="js/nhadat.min.js"></script>
+<script src="js/ui-bootstrap.js"></script>
+<script src="js/google-maps.js"></script>
+<!-- Themes -->
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=vi"></script>
+<script src="js/init.js"></script>
 </body>
 </html>
