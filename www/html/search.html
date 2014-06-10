@@ -1,0 +1,114 @@
+<div ng-controller="TypeaheadCtrl">
+	<div class="search">
+		<form>
+			<div class="ngTags" tabindex="-1">
+				<div class="tags">
+					<ul class="tag-list">
+						<li class="tag-item" ng-repeat="tag in tags">
+							<span>{{tag.text}}</span>
+							<button type="button" ng-click="remove($index)">×</button>
+						</li>
+					</ul>
+					<input type="text" placeholder="Địa danh, chủ đề hay từ bất kỳ..." class="tag-input" ng-focus="focus()" ng-model="newTag" ng-change="suggests(newTag)" ti-autosize="">
+				</div>
+			</div>
+			<div class="loading" ng-show='busy'></div>
+		</form>
+		<div class="container" ng-show="isFirst">
+			<p>Tìm kiếm như Google!</p>
+			<p>
+			Bạn đánh một vài chữ và nhadat.com sẽ hiểu bạn đang tìm gì. Ví dụ:
+			</p>
+			<ul>
+				<li>Đánh "Bot" rồi chọn "Botanic Tower", hay</li>
+				<li>Đánh "Hai" rồi chọn "Hải Phòng", hay</li>
+				<li>Đánh "Ben" rồi chọn "P Bến Nghé, Q1", hay</li>
+				<li>Đánh "nha" rồi chọn "cho thuê nhà trọ", hay</li>
+				<li>Đánh "1 ti" rồi chọn "dưới 1 tỉ đ"</li>
+			</ul>
+		</div>
+		<div class="container-fluid" ng-show="follows">
+			<div class="follows" ng-show="isFollow">
+				<h5 ng-hide="isFirst">Tìm thấy <span><b>{{follows.group.length}}</b> địa danh</span><span><b>{{follows.city.length}}</b> tỉnh thành</span><span><b>{{follows.district.length}}</b> quận huyện</span><span><b>{{follows.zipcode.length}}</b> phường xã</span><span><b>{{follows.topic.length}}</b> chủ đề</span>
+				</h5>
+				<h5 ng-show="isFirst" class="uppercase">ĐƯỢC TÌM KIẾM NHIỀU NHẤT TRÊN GOOGLE:</h5>
+				<div class="content">
+					<div ng-show="follows.group">
+						<h5>Địa danh</h5>
+						<p>
+						<a ng-repeat="t in follows.group" class="btn btn-tag" ng-click="add(t)">{{t.text}}</a>
+						</p>
+					</div>
+					<div ng-show="follows.city">
+						<h5>Tỉnh thành</h5>
+						<p>
+						<a ng-repeat="t in follows.city" class="btn btn-tag" ng-click="add(t)">{{t.text}}</a>
+						</p>
+					</div>
+					<div ng-show="follows.district">
+						<h5>Quận huyện</h5>
+						<p>
+						<a ng-repeat="t in follows.district" class="btn btn-tag" ng-click="add(t)">{{t.text}}</a>
+						</p>
+					</div>
+					<div ng-show="follows.zipcode">
+						<h5>Phường xã</h5>
+						<p>
+						<a ng-repeat="t in follows.zipcode" class="btn btn-tag" ng-click="add(t)">{{t.text}}</a>
+						</p>
+					</div>
+					<div ng-show="follows.topic">
+						<h5>Chủ đề</h5>
+						<p>
+						<a ng-repeat="t in follows.topic" class="btn btn-tag" ng-click="add(t)">{{t.text}}</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="group" ng-show="item">
+		<div class="container-fluid">
+			<div ng-switch on="item.type">
+				<div class="map-marker" ng-switch-when="city"><i class="vietnam"></i></div>
+				<div class="map-marker" ng-switch-when="group"><i class="icon-map-marker"></i></div>
+				<div class="map-marker" ng-switch-when="topic"><i class="icon-key"></i></div>
+			</div>
+			<h1>{{item.name}}</h1>
+			<p ng-if="item.long_name" ng-bind-html="item.long_name|unsafe"></p>
+			<div class="by center" ng-if="item.by_name"><em>Địa danh được tạo đầu tiên bởi {{item.by_name}}.</em>
+				<!--br />
+				<button class="btn btn-xs btn-default">RAO BÁN<br />tại {{item.name}}</button> <button class="btn btn-xs btn-default">TRAO ĐỔI<br /> về {{item.name}}</button-->
+			</div>
+			<div class="tag" ng-show="item.tags">
+				<a ng-repeat="(k,v) in item.tags" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
+			</div>
+			<div class="like" follow="{{item.slug}}">
+				<a ng-class="{'active':item.followed}"><i class="icon-thumbs-up"></i></a>{{item.follows}} theo dõi
+			</div>
+			<div class="tag" ng-show="item.locals">
+				<a ng-repeat="(k,v) in item.locals" class="btn btn-tag" go-click="/t/{{k}}.html">{{v}}</a>
+			</div>
+			<div class="address" ng-if="item.local">
+				<span ng-if="item.address">{{item.address}}, </span>{{item.local}}
+			</div>
+			<div id="gmap" ng-if="item.map">
+				<div class="google-map"
+					center="position.coords"
+					zoom="zoom"
+					markers="markers"
+					latitude="latitude"
+					longitude="longitude"
+					events="events"
+					mark-click="false"
+					draggable="false"
+					fit="true">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-show="results">
+		<classifieds></classifieds>
+	</div>
+</div>
+<!-- /Search -->

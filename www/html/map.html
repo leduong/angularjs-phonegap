@@ -1,0 +1,23 @@
+<div ng-controller="MapCtrl">
+	<div class="container-fluid">
+		<div class="group">
+			<div class="address">
+				{{item.meta.address}}
+			</div>
+			<div id="gmap" class="fullscreen" ng-if="item.meta.map">
+				<div class="google-map"
+					center="position.coords"
+					zoom="zoom"
+					markers="markers"
+					latitude="latitude"
+					longitude="longitude"
+					mark-click="false"
+					draggable="true"
+					fit="false">
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!-- /Agent -->

@@ -1,0 +1,149 @@
+<div class="container-fluid" ng-controller="GroupCtrl">
+	<div id="share">
+		<form role="form">
+			<input type="hidden" ng-init="form.tag = ([])" />
+			<div ng-switch="CurrentStep()">
+				<div ng-switch-when="one">
+					<div class="form-group">
+						<div class="controls">
+							<p>"Địa danh" là cách nhadat.com gọi chung cho:</p>
+							<div>
+								<ul>
+									<li>Dự án, như Khu Quy Hoạch Xi Hàn Quốc</li>
+									<li>Khu đô thị, như Khu ĐTM Phú Mỹ Hưng</li>
+									<li>Khu nhà ở, như Khu Nhà Ở Nam Long Phước Long B</li>
+									<li>Khu căn hộ, như Saigon Pearl, và...</li>
+									<li>Các địa danh khác, như Ngã Tư Bảy Hiền, Lăng Cha Cả.</li>
+								</ul>
+							</div>
+							<p>
+							Địa danh không phải là tên hành chính như phường xã, quận huyện, tỉnh thành.
+							</p>
+							<p>
+							Hãy tạo địa danh ngay hôm nay và nhận thưởng <b>1,000,000 đồng</b> vào tài khoản nhadat.com của bạn.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div ng-switch-when="two">
+					<div class="form-group">
+						<input type="text" ng-model="form.name" class="form-control" placeholder="Tên gọi tốt nhất" />
+					</div>
+					<div class="form-group">
+						<input type="text" ng-model="form.long_name" class="form-control" placeholder="Các tên gọi khác nhau" />
+						<p class="help-block">
+						Xin gọi hết các tên gọi khác của địa danh, cách nhau bằng dấu ','.
+						</p>
+					</div>
+				</div>
+				<div ng-switch-when="three">
+					<div class="form-group">
+						<p>
+						Địa danh của bạn có trùng với các địa danh có sẵn sau đây không?
+						</p>
+						<div class="form-group">
+							<ul>
+								<li ng-repeat="item in items">
+									<div><strong>{{item.name}}</strong></div>
+									<div>{{item.long_name}}</div>
+									<div><em>{{item.address}}, {{item.local}}</em></div>
+								</li>
+								<li ng-if="items.length < 1">KHÔNG CÓ ĐỊA DANH NÀO KHÁC.</li>
+							</ul>
+						</div>
+						<p>
+						Nếu không trùng bấm "Tiếp theo" để tạo địa danh. Hoặc có thể bấm "Trở lại" để tạo địa danh khác.
+						</p>
+						<p>
+						<em>
+						Bạn có biết? Bạn có thể tạo địa danh mới trong địa danh có sẵn, như Mỹ Khánh trong Phú Mỹ Hưng.
+						</em>
+						</p>
+					</div>
+				</div>
+				<div ng-switch-when="four">
+					<div class="form-group" ng-class="{'has-success':success}">
+						<div class="input-group">
+							<input type="text" placeholder="Tên miền của địa danh" class="form-control right" ng-model="form.subdomain" ng-change="Domain()">
+							<span class="input-group-addon">.nhadat.com</span>
+						</div>
+						<p class="control-label" ng-show="success">Tên miền {{form.subdomain}}.nhadat.com hợp lệ.</p>
+					</div>
+					<div class="form-group">
+						<p class="help-block">Mỗi địa danh sẽ có tên miền (subdomain) duy nhất và cố định. Bạn có thể sử dụng subdomain này trên Google Maps, Facebook, vv.
+						</p>
+					</div>
+				</div>
+				<div ng-switch-when="five">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="form.address" placeholder="Số nhà, tên đường" />
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="form.local1" ng-change="suggests()" placeholder="Phường xã, Quận huyện, Tỉnh thành" />
+					</div>
+					<div class="form-group" ng-show="results">
+						<div>Xin xác nhận địa chỉ hành chính như sau:</div>
+						<div class="loading" ng-show='busy'></div>
+						<div class="location">
+							<div class="radio" ng-repeat="k in results">
+								<label>
+									<input ng-click="gmap(k)" type="radio" name="local" ng-checked="(form.local==k.local)" />
+									{{k.long_name}}
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-switch-when="six">
+					<div class="form-group">Xác định vị trí BĐS trên bản đồ</div>
+					<div class="form-group">
+						<button class="btn btn-primary" ng-click="checkin()">Lấy vị trí hiện tại</button>
+					</div>
+					<div class="form-group">
+						<div id="gmap" class="fullscreen">
+							<div class="google-map"
+								center="center"
+								zoom="zoom"
+								markers="markers"
+								latitude="latitude"
+								longitude="longitude"
+								mark-click="true"
+								draggable="true"
+								fit="false">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-switch-when="seven">
+					<div class="form-group">
+						<p>
+						Nhập các từ khóa để mô tả địa danh như: chung cư, căn hộ, chung cư cao cấp, căn hộ cho thuê, cty Nam Long, Phú Mỹ Hưng, vv.
+						</p>
+						<p>
+						Sau đó chọn các từ khóa mà hệ thống đề nghị bên dưới
+						</p>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="keywords" placeholder="Các từ khóa để mô tả địa danh..." ng-change="Tags(keywords)" />
+					</div>
+					<div ng-show="tags">
+						<button ng-repeat="k in tags" class="btn btn-tag" ng-class="{'active':form.tag.indexOf(k) > -1}" ng-click="toggle(k)"
+						>{{k}}
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="form-group btn-share">
+				<div class="pull-right">
+					<a class="btn btn-default btn-medium" ng-click="Previous()" ng-show="!isFirstStep()"> <i class="icon-arrow-left"></i>
+					Trở lại
+					</a>
+					<a class="btn btn-primary btn-medium" ng-click="Next()">
+					{{Label()}} <i class="icon-arrow-right"></i>
+					</a>
+				</div>
+			</div>
+			<br class="clearfix" />
+		</form>
+	</div>
+</div>
