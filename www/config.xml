@@ -7,13 +7,28 @@
 	<author email="cskh@nhadat.com" href="http://nhadat.com">
 		Nha Dat Team
 	</author>
-	<icon src="res/icon.png" />
-    <access origin="*" />
 	<content src="index.html" />
+    <access origin="*" />
+    <feature name="http://api.phonegap.com/1.0/camera"/>
+    <feature name="http://api.phonegap.com/1.0/file"/>
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/network" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="false" />
-    <preference name="UIWebViewBounce" value="false" />
-    <preference name="DisallowOverscroll" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    <icon src="res/icon.png" />
 	<icon gap:platform="winphone" src="res/icon/winphone/icon-48.png" />
 	<icon gap:platform="winphone" gap:role="background" src="res/icon/winphone/icon-173.png" />
     <gap:splash gap:platform="winphone" src="res/screen/winphone/screen-portrait.jpg" />
